@@ -1,0 +1,38 @@
+.navtab {
+	background: #000;
+}
+
+.navtab__shortcuts {
+	display: flex;
+	gap: 24px;
+	justify-content: center;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	margin: 0 auto;
+}
+
+.navtab__item {
+	color: #fff;
+	font-size: 11px;
+	font-weight: 500;
+	line-height: 16px;
+	list-style: none;
+	text-decoration: none;
+	border-bottom: 1px solid #fff;
+}
+
+@media screen and (min-width: 768px) {
+	.navtab__shortcuts {
+		gap: 40px;
+	}
+
+	.navtab__item {
+		font-size: 13px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.navtab__shortcuts {
+		padding: 25px 0;
+	}
+}

@@ -1,0 +1,103 @@
+/* GENERAL HEADER CSS */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	box-sizing: border-box;
+}
+
+.header__landing {
+	background: #f3c1f8;
+}
+
+.header__logo {
+	position: relative;
+	box-sizing: border-box;
+	min-width: 38px;
+	min-height: 38px;
+	margin: 18px 0px 18px 14px;
+}
+
+@media screen and (min-width: 768px) {
+	.header__logo {
+		margin-left: 30px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.header__logo {
+		margin-left: 70px;
+	}
+}
+
+/* HEADER AUTH LINKS CSS */
+.header__auth_logo {
+	min-width: 38px;
+	min-height: 38px;
+	margin: 56px 141px 50px;
+}
+
+.header__auth_links {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	margin-right: 14px;
+	margin-top: 24px;
+}
+
+.header__auth_signup {
+	color: #000;
+	font-size: 10px;
+	font-weight: 500;
+	text-decoration: none;
+	line-height: 16px;
+	margin-right: 14px;
+	cursor: pointer;
+}
+
+.header__auth_signin {
+	min-width: 54px;
+	height: 26px;
+	color: #fff;
+	background: #000;
+	text-decoration: none;
+	font-size: 10px;
+	font-weight: 500;
+	line-height: 26px;
+	border: 0px solid #000;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+	.header__auth_logo {
+		margin: 232px 0 36px 186px;
+	}
+
+	.header__auth_links {
+		margin-right: 30px;
+		margin-top: 21px;
+	}
+
+	.header__auth_signup {
+		margin-right: 30px;
+		font-size: 12px;
+	}
+
+	.header__auth_signin {
+		font-size: 12px;
+		min-width: 76px;
+		height: 32px;
+		line-height: 32px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.header__auth_logo {
+		margin: 70px 0 36px 442px;
+	}
+
+	.header__auth_links {
+		margin-right: 70px;
+	}
+}
