@@ -15,11 +15,21 @@ function Footer() {
 						Учебный проект Яндекс.Практикум х BeatFilm.
 					</p>
 					<nav className="footer__nav">
-						<div className="footer__nav_links">
-							<a className="footer__link" href="https://practicum.yandex.ru/">
+						<div className="footer__nav-links">
+							<a
+								className="footer__link link"
+								href="https://practicum.yandex.ru/"
+								rel="noreferrer"
+								target="_blank"
+							>
 								Яндекс.Практикум
 							</a>
-							<a className="footer__link" href="https://github.com/k3658">
+							<a
+								className="footer__link link"
+								href="https://github.com/k3658"
+								rel="noreferrer"
+								target="_blank"
+							>
 								GitHub
 							</a>
 						</div>

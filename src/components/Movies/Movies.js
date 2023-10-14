@@ -17,12 +17,12 @@ function Movies() {
 	});
 
 	return (
-		<section className="movies">
-			<main>
+		<main>
+			<section className="movies">
 				<SearchForm />
 				<MoviesCardList movies={movies} />
-			</main>
-		</section>
+			</section>
+		</main>
 	);
 }
 

@@ -19,4 +19,9 @@ const findScreenSize = (screenWidth) => {
 	}
 };
 
-export { URL_BEATFILM_MOVIES_API, URL_BASE_API, findScreenSize };
+export {
+	URL_BEATFILM_MOVIES_API,
+	URL_BASE_API,
+	SCREEN_SIZE_MAP,
+	findScreenSize,
+};

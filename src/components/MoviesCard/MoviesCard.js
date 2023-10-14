@@ -15,7 +15,6 @@ function MoviesCard({ trailerLink }) {
 	};
 
 	const isSavedMoviesPage = location.pathname === "/saved-movies";
-
 	return (
 		<li className="movie-card">
 			<div className="movie-card__container">
@@ -37,24 +36,24 @@ function MoviesCard({ trailerLink }) {
 				</div>
 				{isSavedMoviesPage && (
 					<button
-						className="movie-card__delete_button"
+						className="movie-card__delete-button"
 						type="button"
-						aria-label="Кнопка удалить"
-					></button>
+						aria-label="Удалить сохраненный фильм"
+					/>
 				)}
 				{!isSavedMoviesPage &&
 					(isSaved ? (
 						<button
-							className="movie-card__save_button_active"
+							className="movie-card__save-button-active"
 							type="button"
-							aria-label="Кнопка фильм сохранён"
+							aria-label="Фильм сохранён"
 							onClick={handleSaveButtonClick}
-						></button>
+						/>
 					) : (
 						<button
-							className="movie-card__save_button"
+							className="movie-card__save-button"
 							type="button"
-							aria-label="Кнопка сохранить"
+							aria-label="Сохранить фильм"
 							onClick={handleSaveButtonClick}
 						>
 							Сохранить

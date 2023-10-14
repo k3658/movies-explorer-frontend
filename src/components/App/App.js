@@ -1,5 +1,4 @@
 import "../../index.css";
-import "./App.css";
 
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -35,7 +34,7 @@ function App() {
 	const [isLoading, setIsLoading] = useState(false);
 
 	return (
-		<div className="page">
+		<>
 			<Header isLoggedIn={isLoggedIn} />
 			<Routes>
 				<Route
@@ -65,7 +64,7 @@ function App() {
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>
 			<Footer />
-		</div>
+		</>
 	);
 }
 

@@ -1,5 +1,6 @@
 import "./MoviesCardList.css";
 
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import MoviesCard from "../MoviesCard/MoviesCard";
@@ -7,21 +8,25 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 function MoviesCardList() {
 	const { pathname } = useLocation();
 
-	const movies = Array.apply(null, Array(12)).map((elem, i) => {
+	const movies = Array.apply(null, Array(5)).map((elem, i) => {
 		return i;
 	});
 
 	return (
 		<>
-			<section className="movies">
-				<ul className="movies__list">
+			<section className="movie-cards">
+				<ul className="movie-cards__list">
 					{movies.map((card, i) => (
 						<MoviesCard key={i} />
 					))}
 				</ul>
-				<div className="movies__button_container">
+				<div className="movie-cards__button-container">
 					{pathname === "/movies" && (
-						<button className="movies__more_button" type="button">
+						<button
+							className="movie-cards__more-button button"
+							type="button"
+							aria-label="Больше фильмов"
+						>
 							Ещё
 						</button>
 					)}

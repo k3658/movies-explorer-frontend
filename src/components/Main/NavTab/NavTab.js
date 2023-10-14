@@ -16,16 +16,20 @@ function NavTab() {
 		<section className="navtab">
 			<nav className="navtab__shortcuts">
 				<a
-					className="navtab__item"
+					className="navtab__item link"
 					href="#about-project"
 					onClick={smoothScroll}
 				>
 					О проекте
 				</a>
-				<a className="navtab__item" href="#techs" onClick={smoothScroll}>
+				<a className="navtab__item link" href="#techs" onClick={smoothScroll}>
 					Технологии
 				</a>
-				<a className="navtab__item" href="#about-me" onClick={smoothScroll}>
+				<a
+					className="navtab__item link"
+					href="#about-me"
+					onClick={smoothScroll}
+				>
 					Студент
 				</a>
 			</nav>

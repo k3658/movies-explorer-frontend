@@ -16,19 +16,19 @@ function Header({ isLoggedIn }) {
 			pathname === "/saved-movies" ||
 			pathname === "/profile" ? (
 				<header
-					className={`header ${pathname === "/" ? "header__landing" : ""}`}
+					className={`header ${pathname === "/" ? "header_landing" : ""}`}
 				>
-					<Link to="/" className="header__logo">
+					<Link to="/" className="header__logo link">
 						<img src={logo} alt="Логотип приложения" />
 					</Link>
 					{isLoggedIn ? (
 						<BurgerMenu isLoggedIn={isLoggedIn} />
 					) : (
-						<nav className="header__auth_links">
-							<Link to="/signup" className="header__auth_signup">
+						<nav className="header__auth">
+							<Link to="/signup" className="header__auth-signup link">
 								Регистрация
 							</Link>
-							<Link to="/signin" className="header__auth_signin">
+							<Link to="/signin" className="header__auth-signin link">
 								Войти
 							</Link>
 						</nav>
@@ -38,14 +38,16 @@ function Header({ isLoggedIn }) {
 				""
 			)}
 			{pathname === "/signin" || pathname === "/signup" ? (
-				<header className="header__auth">
-					<Link to="/">
-						<img
-							src={logo}
-							className="header__auth_logo"
-							alt="Логотип приложения"
-						/>
-					</Link>
+				<header className="header-auth">
+					<div className="header-auth__container">
+						<Link to="/">
+							<img
+								src={logo}
+								className="header-auth__logo link"
+								alt="Логотип приложения"
+							/>
+						</Link>
+					</div>
 				</header>
 			) : (
 				""

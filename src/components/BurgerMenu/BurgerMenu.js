@@ -26,31 +26,31 @@ function BurgerMenu({ isLoggedIn }) {
 		<section className="burger-menu">
 			<>
 				{isLoggedIn && isMobile && (
-					<label className="burger-menu__nav_button">
+					<label className="burger-menu__nav-button">
 						<input
-							className="burger-menu__nav_switcher"
+							className="burger-menu__nav-switcher"
 							type="checkbox"
 							onClick={handleToggleMenu}
 						/>
-						<span className="burger-menu__nav_button_transition" />
-						<span className="burger-menu__nav_button_transition" />
-						<span className="burger-menu__nav_button_transition" />
-						<span className="burger-menu__nav_button_transition" />
+						<span className="burger-menu__nav-button-transition" />
+						<span className="burger-menu__nav-button-transition" />
+						<span className="burger-menu__nav-button-transition" />
+						<span className="burger-menu__nav-button-transition" />
 					</label>
 				)}
 				<div
 					className={`burger-menu__container ${
-						isMenuOpened ? "burger-menu__container_active" : ""
+						isMenuOpened ? "burger-menu__container-active" : ""
 					}`}
 				>
 					{isLoggedIn && isMobile ? (
-						<nav className="burger-menu__nav_container">
-							<div className="burger-menu__nav_links">
+						<nav className="burger-menu__nav-container">
+							<div className="burger-menu__nav-links">
 								<NavLink
 									to="/"
 									className={({ isActive }) =>
-										`burger-menu__nav_link ${
-											isActive ? "burger-menu__nav_link_active" : ""
+										`burger-menu__nav-link link ${
+											isActive ? "burger-menu__nav-link-active" : ""
 										}`
 									}
 									onClick={handleCloseMenu}
@@ -60,8 +60,8 @@ function BurgerMenu({ isLoggedIn }) {
 								<NavLink
 									to="/movies"
 									className={({ isActive }) =>
-										`burger-menu__nav_link ${
-											isActive ? "burger-menu__nav_link_active" : ""
+										`burger-menu__nav-link link ${
+											isActive ? "burger-menu__nav-link-active" : ""
 										}`
 									}
 									onClick={handleCloseMenu}
@@ -71,8 +71,8 @@ function BurgerMenu({ isLoggedIn }) {
 								<NavLink
 									to="/saved-movies"
 									className={({ isActive }) =>
-										`burger-menu__nav_link ${
-											isActive ? "burger-menu__nav_link_active" : ""
+										`burger-menu__nav-link link ${
+											isActive ? "burger-menu__nav-link-active" : ""
 										}`
 									}
 									onClick={handleCloseMenu}
@@ -83,8 +83,8 @@ function BurgerMenu({ isLoggedIn }) {
 							<NavLink
 								to="/profile"
 								className={({ isActive }) =>
-									`burger-menu__nav_profile ${
-										isActive ? "burger-menu__nav_link_active" : ""
+									`burger-menu__nav-profile link ${
+										isActive ? "burger-menu__nav-link-active" : ""
 									}`
 								}
 								onClick={handleCloseMenu}
@@ -92,19 +92,19 @@ function BurgerMenu({ isLoggedIn }) {
 								Аккаунт
 								<img
 									src={icon}
-									className="burger-menu__nav_icon"
+									className="burger-menu__nav-icon"
 									alt="Иконка профиля"
 								/>
 							</NavLink>
 						</nav>
 					) : (
-						<nav className="burger-menu__nav_container">
-							<div className="burger-menu__nav_links">
+						<nav className="burger-menu__nav-container">
+							<div className="burger-menu__nav-links">
 								<NavLink
 									to="/movies"
 									className={({ isActive }) =>
-										`burger-menu__nav_link ${
-											isActive ? "burger-menu__nav_link_active" : ""
+										`burger-menu__nav-link link ${
+											isActive ? "burger-menu__nav-link-active" : ""
 										}`
 									}
 								>
@@ -113,8 +113,8 @@ function BurgerMenu({ isLoggedIn }) {
 								<NavLink
 									to="/saved-movies"
 									className={({ isActive }) =>
-										`burger-menu__nav_link ${
-											isActive ? "burger-menu__nav_link_active" : ""
+										`burger-menu__nav-link link ${
+											isActive ? "burger-menu__nav-link-active" : ""
 										}`
 									}
 								>
@@ -124,7 +124,7 @@ function BurgerMenu({ isLoggedIn }) {
 							<NavLink
 								to="/profile"
 								className={({ isActive }) =>
-									`burger-menu__nav_profile ${
+									`burger-menu__nav_profile link ${
 										isActive ? "burger-menu__nav_link_active" : ""
 									}`
 								}
@@ -133,13 +133,13 @@ function BurgerMenu({ isLoggedIn }) {
 								{pathname === "/" ? (
 									<img
 										src={icon_landing}
-										className="burger-menu__nav_icon_landing"
+										className="burger-menu__nav-icon-landing"
 										alt="Иконка профиля"
 									/>
 								) : (
 									<img
 										src={icon}
-										className="burger-menu__nav_icon"
+										className="burger-menu__nav-icon"
 										alt="Иконка профиля"
 									/>
 								)}

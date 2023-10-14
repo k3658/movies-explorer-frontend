@@ -15,20 +15,21 @@
 .about-project__container {
 	display: grid;
 	grid-template-rows: repeat(2, 1fr);
-	margin: 61px 18px;
-	row-gap: 60px;
+	row-gap: 58px;
+	justify-content: center;
+	margin: 61px 18px 60px;
 }
 
-.about-project__info_header {
+.about-project__info-header {
 	color: #000;
 	font-size: 18px;
 	font-weight: 400;
 	letter-spacing: -0.72px;
 	margin-top: 0;
-	margin-bottom: 16px;
+	margin-bottom: 17px;
 }
 
-.about-project__info_text {
+.about-project__info-text {
 	color: #000;
 	font-size: 11px;
 	font-weight: 400;
@@ -41,26 +42,27 @@
 	grid-template-rows: repeat(2, 35px);
 	grid-template-columns: 100px 184px;
 	text-align: center;
+	justify-content: center;
 	margin: 0 18px 94px;
 }
 
-.about-project__timeline_header {
+.about-project__timeline-header {
 	font-size: 11px;
 	font-weight: 400;
 	line-height: 35px;
 	margin: 0;
 }
 
-.about-project__timeline_header:first-of-type {
+.about-project__timeline-header:first-of-type {
 	color: #fff;
 	background: #000;
 }
 
-.about-project__timeline_header:nth-of-type(2) {
+.about-project__timeline-header:nth-of-type(2) {
 	background: #f2f2f2;
 }
 
-.about-project__timeline_text {
+.about-project__timeline-text {
 	color: #a0a0a0;
 	font-size: 11px;
 	font-weight: 400;
@@ -85,13 +87,13 @@
 		margin: 70px 50px 93px;
 	}
 
-	.about-project__info_header {
+	.about-project__info-header {
 		font-size: 20px;
 		letter-spacing: -0.8px;
 		margin-bottom: 24px;
 	}
 
-	.about-project__info_text {
+	.about-project__info-text {
 		font-size: 12px;
 		line-height: 18px;
 	}
@@ -102,11 +104,11 @@
 		margin: 0 50px 85px;
 	}
 
-	.about-project__timeline_header {
+	.about-project__timeline-header {
 		font-size: 14px;
 	}
 
-	.about-project__timeline_text {
+	.about-project__timeline-text {
 		font-size: 14px;
 		line-height: 17px;
 	}
@@ -124,11 +126,11 @@
 		margin: 69px 70px 110px;
 	}
 
-	.about-project__info_header {
+	.about-project__info-header {
 		margin-bottom: 27px;
 	}
 
-	.about-project__info_text {
+	.about-project__info-text {
 		font-size: 14px;
 		line-height: 20px;
 	}

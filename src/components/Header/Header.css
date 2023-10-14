@@ -6,7 +6,7 @@
 	box-sizing: border-box;
 }
 
-.header__landing {
+.header_landing {
 	background: #f3c1f8;
 }
 
@@ -16,11 +16,32 @@
 	min-width: 38px;
 	min-height: 38px;
 	margin: 18px 0px 18px 14px;
+	transition: opacity 0.3s ease-out;
+}
+
+.header-auth {
+	display: flex;
+	justify-content: center;
+}
+
+.header-auth__logo {
+	min-width: 38px;
+	min-height: 38px;
+	margin: 56px 0 47px;
+	transition: opacity 0.3s ease-out;
 }
 
 @media screen and (min-width: 768px) {
 	.header__logo {
 		margin-left: 30px;
+	}
+
+	.header-auth__container {
+		width: 396px;
+	}
+
+	.header-auth__logo {
+		margin: 232px 0 36px;
 	}
 }
 
@@ -28,16 +49,14 @@
 	.header__logo {
 		margin-left: 70px;
 	}
+
+	.header-auth__logo {
+		margin: 70px 0 36px;
+	}
 }
 
 /* HEADER AUTH LINKS CSS */
-.header__auth_logo {
-	min-width: 38px;
-	min-height: 38px;
-	margin: 56px 141px 50px;
-}
-
-.header__auth_links {
+.header__auth {
 	display: flex;
 	align-items: center;
 	text-align: center;
@@ -45,17 +64,17 @@
 	margin-top: 24px;
 }
 
-.header__auth_signup {
+.header__auth-signup {
 	color: #000;
 	font-size: 10px;
 	font-weight: 500;
 	text-decoration: none;
 	line-height: 16px;
 	margin-right: 14px;
-	cursor: pointer;
+	transition: opacity 0.3s ease-out;
 }
 
-.header__auth_signin {
+.header__auth-signin {
 	min-width: 54px;
 	height: 26px;
 	color: #fff;
@@ -66,25 +85,21 @@
 	line-height: 26px;
 	border: 0px solid #000;
 	border-radius: 3px;
-	cursor: pointer;
+	transition: opacity 0.3s ease-out;
 }
 
 @media screen and (min-width: 768px) {
-	.header__auth_logo {
-		margin: 232px 0 36px 186px;
-	}
-
-	.header__auth_links {
+	.header__auth {
 		margin-right: 30px;
 		margin-top: 21px;
 	}
 
-	.header__auth_signup {
+	.header__auth-signup {
 		margin-right: 30px;
 		font-size: 12px;
 	}
 
-	.header__auth_signin {
+	.header__auth-signin {
 		font-size: 12px;
 		min-width: 76px;
 		height: 32px;
@@ -93,11 +108,7 @@
 }
 
 @media screen and (min-width: 1280px) {
-	.header__auth_logo {
-		margin: 70px 0 36px 442px;
-	}
-
-	.header__auth_links {
+	.header__auth {
 		margin-right: 70px;
 	}
 }

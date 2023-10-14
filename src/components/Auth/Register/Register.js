@@ -30,7 +30,7 @@ function Register({ onRegister, isLoading }) {
 				onSubmit={handleSubmit}
 				isLoading={isLoading}
 			>
-				<label className="form__input_label">Имя</label>
+				<label className="form__input-label">Имя</label>
 				<input
 					className={`form__input form__input_field_name ${
 						errors.name && "form__input_error"
@@ -38,6 +38,7 @@ function Register({ onRegister, isLoading }) {
 					id="input-name"
 					name="name"
 					type="name"
+					placeholder="Имя"
 					minLength="3"
 					maxLength="40"
 					onChange={handleChange}
@@ -48,7 +49,7 @@ function Register({ onRegister, isLoading }) {
 					{errors.name}
 				</span>
 
-				<label className="form__input_label">E-mail</label>
+				<label className="form__input-label">E-mail</label>
 				<input
 					className={`form__input form__input_field_email ${
 						errors.email && "form__input_error"
@@ -56,6 +57,7 @@ function Register({ onRegister, isLoading }) {
 					id="input-email"
 					name="email"
 					type="email"
+					placeholder="E-mail"
 					minLength="3"
 					maxLength="40"
 					onChange={handleChange}
@@ -66,7 +68,7 @@ function Register({ onRegister, isLoading }) {
 					{errors.email}
 				</span>
 
-				<label className="form__input_label">Пароль</label>
+				<label className="form__input-label">Пароль</label>
 				<input
 					className={`form__input form__input_field_password ${
 						errors.password && "form__input_error"
@@ -74,6 +76,7 @@ function Register({ onRegister, isLoading }) {
 					id="input-password"
 					name="password"
 					type="password"
+					placeholder="Пароль"
 					minLength="6"
 					maxLength="40"
 					onChange={handleChange}

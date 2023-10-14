@@ -14,12 +14,12 @@
 	z-index: 15;
 }
 
-.burger-menu__container_active {
+.burger-menu__container-active {
 	opacity: 1;
 	visibility: visible;
 }
 
-.burger-menu__nav_container {
+.burger-menu__nav-container {
 	display: flex;
 	flex-direction: column;
 	min-width: 320px;
@@ -30,14 +30,14 @@
 	padding-top: 144px;
 }
 
-.burger-menu__nav_links {
+.burger-menu__nav-links {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 24px;
 }
 
-.burger-menu__nav_link {
+.burger-menu__nav-link {
 	width: fit-content;
 	text-decoration: none;
 	color: #000;
@@ -45,14 +45,15 @@
 	font-feature-settings: "clig" off, "liga" off;
 	font-size: 18px;
 	font-weight: 500;
+	transition: opacity 0.3s ease-out;
 }
 
-.burger-menu__nav_link_active {
+.burger-menu__nav-link-active {
 	padding-bottom: 7px;
 	border-bottom: 2px solid #000;
 }
 
-.burger-menu__nav_profile {
+.burger-menu__nav-profile {
 	display: flex;
 	color: #000;
 	font-size: 14px;
@@ -62,28 +63,29 @@
 	align-items: center;
 	gap: 13px;
 	margin-bottom: 48px;
+	transition: opacity 0.3s ease-out;
 }
 
-.burger-menu__nav_icon {
+.burger-menu__nav-icon {
 	border-radius: 6px;
 	border: 10px solid #f9f9f9;
 }
 
 @media screen and (min-width: 768px) {
-	.burger-menu__nav_container {
+	.burger-menu__nav-container {
 		min-width: 520px;
 		padding-top: 159px;
 	}
 
-	.burger-menu__nav_links {
+	.burger-menu__nav-links {
 		gap: 28px;
 	}
 
-	.burger-menu__nav_link_active {
+	.burger-menu__nav-link-active {
 		padding-bottom: 4px;
 	}
 
-	.burger-menu__nav_profile {
+	.burger-menu__nav-profile {
 		margin-bottom: 92px;
 	}
 }
@@ -99,11 +101,11 @@
 		z-index: 15;
 	}
 
-	.burger-menu__container_active {
+	.burger-menu__container-active {
 		display: none;
 	}
 
-	.burger-menu__nav_container {
+	.burger-menu__nav-container {
 		min-width: 320px;
 		height: auto;
 		gap: 50px;
@@ -114,19 +116,19 @@
 		padding: 0;
 	}
 
-	.burger-menu__nav_links {
+	.burger-menu__nav-links {
 		flex-direction: row;
 		align-items: center;
 		gap: 20px;
 	}
 
-	.burger-menu__nav_link {
+	.burger-menu__nav-link {
 		font-size: 14px;
 		font-weight: 400;
 		line-height: 18px;
 	}
 
-	.burger-menu__nav_link_active {
+	.burger-menu__nav-link-active {
 		font-size: 14px;
 		font-weight: 500;
 		line-height: 18px;
@@ -134,11 +136,11 @@
 		border-bottom: 0;
 	}
 
-	.burger-menu__nav_profile {
+	.burger-menu__nav-profile {
 		margin: 0;
 	}
 
-	.burger-menu__nav_icon_landing {
+	.burger-menu__nav-icon-landing {
 		background-color: #000;
 		border-radius: 6px;
 		border: 10px solid #000;
@@ -146,7 +148,7 @@
 }
 
 /* BUTTON CSS */
-.burger-menu__nav_button {
+.burger-menu__nav-button {
 	display: flex;
 	position: absolute;
 	top: 27.5px;
@@ -161,43 +163,43 @@
 	z-index: 30;
 }
 
-.burger-menu__nav_button:hover {
+.burger-menu__nav-button:hover {
 	opacity: 80%;
 }
 
-.burger-menu__nav_switcher {
+.burger-menu__nav-switcher {
 	display: none;
 }
 
-.burger-menu__nav_switcher:checked
-	~ .burger-menu__nav_button_transition:nth-child(2) {
+.burger-menu__nav-switcher:checked
+	~ .burger-menu__nav-button-transition:nth-child(2) {
 	top: 50%;
 	transform: translateY(-50%);
 	opacity: 0;
 }
 
-.burger-menu__nav_switcher:checked
-	~ .burger-menu__nav_button_transition:last-child {
+.burger-menu__nav-switcher:checked
+	~ .burger-menu__nav-button-transition:last-child {
 	bottom: 50%;
 	transform: translateY(-50%);
 	opacity: 0;
 }
 
-.burger-menu__nav_switcher:checked
-	~ .burger-menu__nav_button_transition:nth-child(3) {
+.burger-menu__nav-switcher:checked
+	~ .burger-menu__nav-button-transition:nth-child(3) {
 	top: 50%;
 	transform: translateY(-50%) rotate(45deg);
 	transition-delay: 0.2s;
 }
 
-.burger-menu__nav_switcher:checked
-	~ .burger-menu__nav_button_transition:nth-child(4) {
+.burger-menu__nav-switcher:checked
+	~ .burger-menu__nav-button-transition:nth-child(4) {
 	top: 50%;
 	transform: translateY(-50%) rotate(-45deg);
 	transition-delay: 0.2s;
 }
 
-.burger-menu__nav_button_transition {
+.burger-menu__nav-button-transition {
 	position: absolute;
 	width: 24px;
 	height: 3px;
@@ -206,27 +208,27 @@
 	transition: 0.25s all ease-in-out;
 }
 
-.burger-menu__nav_button_transition:nth-child(3),
-.burger-menu__nav_button_transition:nth-child(4) {
+.burger-menu__nav-button-transition:nth-child(3),
+.burger-menu__nav-button-transition:nth-child(4) {
 	top: 50%;
 	transform: translateY(-50%);
 }
 
-.burger-menu__nav_button_transition:last-child {
+.burger-menu__nav-button-transition:last-child {
 	top: auto;
 	bottom: 0;
 	transition: 0.25s all ease-in-out;
 }
 
 @media screen and (min-width: 768px) {
-	.burger-menu__nav_button {
+	.burger-menu__nav-button {
 		right: 42px;
 		height: 22px;
 	}
 }
 
 @media screen and (min-width: 1280px) {
-	.burger-menu__nav_button {
+	.burger-menu__nav-button {
 		display: none;
 	}
 }

@@ -32,10 +32,10 @@ function Profile({ isLoading }) {
 						isLoading={isLoading}
 						noValidate
 					>
-						<div className="profile-form__input_container">
-							<label className="profile-form__input_label">Имя</label>
+						<div className="profile__input-container">
+							<label className="profile__input-label">Имя</label>
 							<input
-								className={`profile-form__input profile-form__input_field_name ${
+								className={`profile__input profile__input_field_name ${
 									errors.name && "form__input_error"
 								}`}
 								id="name"
@@ -52,10 +52,10 @@ function Profile({ isLoading }) {
 							/>
 						</div>
 
-						<div className="profile-form__input_container">
-							<label className="profile-form__input_label">E-mail</label>
+						<div className="profile__input-container">
+							<label className="profile__input-label">E-mail</label>
 							<input
-								className={`profile-form__input profile-form__input_field_email ${
+								className={`profile__input profile__input_field_email ${
 									errors.email && "form__input_error"
 								}`}
 								id="email"
@@ -74,9 +74,9 @@ function Profile({ isLoading }) {
 							<div className="profile__buttons">
 								{<span className="profile__submit-error">Какая-то ошибка</span>}
 								<button
-									className="profile__save_button"
+									className="profile__save-button button"
 									type="submit"
-									aria-label="Кнопка сохранить"
+									aria-label="Cохранить изменения"
 									disabled={!isValid}
 								>
 									Сохранить
@@ -86,13 +86,13 @@ function Profile({ isLoading }) {
 							<div className="profile__buttons">
 								<button
 									type="button"
-									className="profile__edit_button"
+									className="profile__edit-button button"
 									onClick={handleClickEditProfile}
 									aria-label="Редактировать профиль"
 								>
 									Редактировать
 								</button>
-								<Link className="profile__logout_button" to="/">
+								<Link className="profile__logout-button button" to="/">
 									Выйти из аккаунта
 								</Link>
 							</div>

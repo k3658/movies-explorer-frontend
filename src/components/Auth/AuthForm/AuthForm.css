@@ -4,37 +4,43 @@
 	align-items: center;
 }
 
+.auth__container {
+	margin: 0 auto;
+}
+
 .auth__title {
 	color: #000;
 	font-size: 24px;
 	font-weight: 500;
-	margin: 0 0 80px 0;
-	text-align: center;
+	margin: 0 0 80px 43px;
+}
+
+.auth__title_signin {
+	margin: 0 0 80px 80px;
 }
 
 @media screen and (min-width: 768px) {
 	.auth {
 		align-items: flex-start;
-		margin-left: 186px;
 	}
 
 	.auth__title {
 		margin: 0 0 42px 0;
 	}
+
+	.auth__title_signin {
+		margin: 0 0 42px 0;
+	}
 }
 
 @media screen and (min-width: 1280px) {
-	.auth {
-		margin-left: 442px;
-	}
-
 	.auth__title {
 		margin: 0 0 43px 0;
 	}
 }
 
 /* FORM CSS */
-.auth__container {
+.auth__form-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -46,14 +52,14 @@
 	box-sizing: border-box;
 }
 
-.form__input_label {
+.form__input-label {
 	color: #a0a0a0;
 	font-size: 10px;
 	font-weight: 400;
 	margin: 10px 30px 10px;
 }
 
-.form__input_label:first-of-type {
+.form__input-label:first-of-type {
 	margin-top: 0;
 }
 
@@ -65,10 +71,19 @@
 	color: #000;
 	font-size: 13px;
 	font-weight: 400;
-	border-radius: 8px;
 	background: #f9f9f9;
-	margin: 0 30px 10px;
 	padding: 0 15px;
+	margin: 0 30px 10px;
+	border-radius: 8px;
+}
+
+.form__input:focus {
+	border-radius: 0;
+	border-bottom: 1px solid #3456f3;
+}
+
+.form__input::placeholder {
+	color: #cccccc;
 }
 
 .form__error {
@@ -93,6 +108,7 @@
 	margin: 169px 30px 14px;
 	border: 0;
 	cursor: pointer;
+	transition: opacity 0.3s ease-out;
 }
 
 .form__button_disabled {
@@ -103,11 +119,11 @@
 }
 
 .form__button_signin {
-	margin-top: 267px;
+	margin-top: 259px;
 }
 
 @media screen and (min-width: 768px) {
-	.form__input_label {
+	.form__input-label {
 		margin: 0 0 10px;
 	}
 
@@ -128,7 +144,7 @@
 	}
 
 	.form__button_signin {
-		margin: 159px 0 15px;
+		margin: 158px 0 15px;
 	}
 }
 
@@ -149,19 +165,20 @@
 	margin-bottom: 30px;
 }
 
-.auth__login_text {
+.auth__login-text {
 	margin: 0;
 	color: #a0a0a0;
 	font-size: 12px;
 	font-weight: 400;
 }
 
-.auth__login_link {
+.auth__login-link {
 	color: #000;
 	font-size: 12px;
 	font-weight: 400;
 	margin-left: 7px;
 	text-decoration: none;
+	transition: opacity 0.3s ease-out;
 }
 
 @media screen and (min-width: 768px) {
@@ -169,11 +186,11 @@
 		margin-bottom: 232px;
 	}
 
-	.auth__login_text {
+	.auth__login-text {
 		font-size: 14px;
 	}
 
-	.auth__login_link {
+	.auth__login-link {
 		font-size: 14px;
 		margin-left: 6px;
 	}
@@ -186,19 +203,20 @@
 	margin-bottom: 30px;
 }
 
-.auth__signup_text {
+.auth__signup-text {
 	margin: 0;
 	color: #a0a0a0;
 	font-size: 12px;
 	font-weight: 400;
 }
 
-.auth__signup_link {
+.auth__signup-link {
 	color: #000;
 	font-size: 12px;
 	font-weight: 400;
 	margin-left: 7px;
 	text-decoration: none;
+	transition: opacity 0.3s ease-out;
 }
 
 @media screen and (min-width: 768px) {
@@ -206,11 +224,11 @@
 		margin-bottom: 232px;
 	}
 
-	.auth__signup_text {
+	.auth__signup-text {
 		font-size: 14px;
 	}
 
-	.auth__signup_link {
+	.auth__signup-link {
 		font-size: 14px;
 		margin-left: 8px;
 	}
