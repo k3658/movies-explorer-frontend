@@ -13,6 +13,7 @@ function SearchForm() {
 						name="film"
 						type="text"
 						placeholder="Фильм"
+						autoComplete="off"
 						required
 					/>
 					<button

@@ -11,6 +11,8 @@ function Portfolio() {
 						<a
 							className="portfolio__nav-link link"
 							href="https://github.com/k3658/how-to-learn"
+							rel="noreferrer"
+							target="_blank"
 						>
 							<p className="portfolio__nav-text">Статичный сайт</p>
 							<img
@@ -24,6 +26,8 @@ function Portfolio() {
 						<a
 							className="portfolio__nav-link link"
 							href="https://github.com/k3658/russian-travel"
+							rel="noreferrer"
+							target="_blank"
 						>
 							<p className="portfolio__nav-text">Адаптивный сайт</p>
 							<img
