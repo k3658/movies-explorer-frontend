@@ -10,6 +10,10 @@ Frontend https://filmskk36.nomoreparties.co
 
 Backend https://api.filmskk36.nomoreparties.co
 
+## Ссылка на пул реквест
+
+https://github.com/k3658/movies-explorer-frontend/pull/2
+
 ## `npm start`
 
 Runs the app in the development mode.\
