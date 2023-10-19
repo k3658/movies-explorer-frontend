@@ -5,14 +5,14 @@ import moviesApi from "../../utils/MoviesApi";
 import SearchForm from "./SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
-import UseFilterMovies from "../../hooks/UseFilterMovies";
+import useFilterMovies from "../../hooks/useFilterMovies";
 import { errorMessages, searchMessages } from "../../utils/errors";
 import Preloader from "./Preloader/Preloader";
 
 function Movies({ isLoading, setIsLoading, savedMovies, onSave, onDelete }) {
 	const allMovies = JSON.parse(localStorage.getItem("allMovies")) ?? [];
 
-	const { filterMovies, filterShortMovies } = UseFilterMovies();
+	const { filterMovies, filterShortMovies } = useFilterMovies();
 	const [filteredMovies, setFilteredMovies] = useState([]);
 
 	const checkboxState =
@@ -29,7 +29,7 @@ function Movies({ isLoading, setIsLoading, savedMovies, onSave, onDelete }) {
 	function handleFilterMovies(movies, inputSearch, isShort) {
 		const filteredFilms = filterMovies(movies, inputSearch, isShort);
 		localStorage.setItem("filteredMovies", JSON.stringify(filteredFilms));
-		if (!filteredFilms.length) {
+		if (!filteredFilms.length === 0) {
 			setErrorMessage(searchMessages.notFoundSearch);
 		}
 		setFilteredMovies(

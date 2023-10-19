@@ -1,6 +1,6 @@
 import { SHORT_MOVIE_DURATION } from "../utils/constants";
 
-const UseFilterMovies = () => {
+const useFilterMovies = () => {
 	const filterShortMovies = (movie) =>
 		movie.filter(({ duration }) => duration <= SHORT_MOVIE_DURATION);
 
@@ -19,4 +19,4 @@ const UseFilterMovies = () => {
 	return { filterMovies, filterShortMovies };
 };
 
-export default UseFilterMovies;
+export default useFilterMovies;

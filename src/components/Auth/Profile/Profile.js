@@ -1,17 +1,16 @@
 import "./Profile.css";
 
 import React, { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
 
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
-import UseFormValidator from "../../../hooks/UseFormValidator";
+import useFormValidator from "../../../hooks/useFormValidator";
 
 function Profile({ handleUpdateUserData, onLogout, isLoading }) {
 	const { name, email } = useContext(CurrentUserContext);
 	const [isEditProfile, setIsEditProfile] = useState(false);
 
 	const { values, handleChange, errors, isValid, setValues, setIsValid } =
-		UseFormValidator({});
+		useFormValidator({});
 
 	function handleClickEditProfile(evt) {
 		evt.preventDefault();

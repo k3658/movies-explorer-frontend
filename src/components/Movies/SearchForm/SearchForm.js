@@ -4,14 +4,14 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
-import UseFormValidator from "../../../hooks/UseFormValidator";
+import useFormValidator from "../../../hooks/useFormValidator";
 
 function SearchForm({ onSubmit, onChange, isShortMovie }) {
 	const location = useLocation();
 	const isSavedMoviesPage = location.pathname === "/saved-movies";
 
 	const { values, handleChange, errors, isValid, setValues, resetForm } =
-		UseFormValidator({});
+		useFormValidator({});
 
 	const handleSubmit = (evt) => {
 		evt.preventDefault();
@@ -21,7 +21,7 @@ function SearchForm({ onSubmit, onChange, isShortMovie }) {
 
 	useEffect(() => {
 		if (!isSavedMoviesPage) {
-			const savedSearch = localStorage.getItem("request");
+			const savedSearch = localStorage.getItem("inputSearch");
 			if (savedSearch) setValues({ search: savedSearch });
 		}
 	}, []);
@@ -38,8 +38,8 @@ function SearchForm({ onSubmit, onChange, isShortMovie }) {
 				<div className="search__form-container">
 					<input
 						className="search__input"
-						id="film"
-						name="film"
+						id="search"
+						name="search"
 						type="text"
 						placeholder="Фильм"
 						onChange={handleChange}

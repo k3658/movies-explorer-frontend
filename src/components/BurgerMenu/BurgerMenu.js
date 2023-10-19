@@ -3,19 +3,22 @@ import "./BurgerMenu.css";
 import icon from "../../images/icon.svg";
 import icon_landing from "../../images/icon_landing.svg";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-import UseResize from "../../hooks/UseResize";
+import useResize from "../../hooks/useResize";
 
-function BurgerMenu({ isLoggedIn }) {
+function BurgerMenu({ loggedIn }) {
 	const { pathname } = useLocation();
 
+	const btnBurger = useRef();
 	const [isMenuOpened, setIsMenuOpened] = useState(false);
-	const isMobile = UseResize() <= 768;
+
+	const isMobile = useResize() <= 768;
 
 	function handleToggleMenu() {
 		setIsMenuOpened(!isMenuOpened);
+		btnBurger.current.classList.toggle("checked");
 	}
 
 	function handleCloseMenu() {
@@ -25,10 +28,11 @@ function BurgerMenu({ isLoggedIn }) {
 	return (
 		<section className="burger-menu">
 			<>
-				{isLoggedIn && isMobile && (
+				{loggedIn && isMobile && (
 					<label className="burger-menu__nav-button">
 						<input
 							className="burger-menu__nav-switcher"
+							ref={btnBurger}
 							type="checkbox"
 							onClick={handleToggleMenu}
 						/>
@@ -43,7 +47,7 @@ function BurgerMenu({ isLoggedIn }) {
 						isMenuOpened ? "burger-menu__container-active" : ""
 					}`}
 				>
-					{isLoggedIn && isMobile ? (
+					{loggedIn && isMobile ? (
 						<nav className="burger-menu__nav-container">
 							<div className="burger-menu__nav-links">
 								<NavLink

@@ -4,26 +4,19 @@ import { useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import {
-	convertDuration,
-	URL_BEATFILM_MOVIES_API,
-} from "../../utils/constants";
+import { URL_BEATFILM_MOVIES_API } from "../../utils/constants";
 
-function MoviesCard({ movie, savedMovies, onSave, onDelete }) {
-	const currentUser = useContext(CurrentUserContext);
-
+function MoviesCard({ movie, onSave, onDelete }) {
 	const location = useLocation();
 	const isSavedMoviesPage = location.pathname === "/saved-movies";
 
 	const [isSaved, setIsSaved] = useState(false);
 
-	useEffect(() => {
-		savedMovies.forEach((movie) => {
-			if (movie.movieId === movie.id) {
-				setIsSaved(true);
-			}
-		});
-	}, [currentUser]);
+	function convertDuration() {
+		const minutes = movie.duration % 60;
+		const hours = Math.floor(movie.duration / 60);
+		return `${hours}ч ${minutes}м`;
+	}
 
 	const handleSaveButtonClick = (evt) => {
 		evt.target.classList.toggle("movies-card__save_button_active");

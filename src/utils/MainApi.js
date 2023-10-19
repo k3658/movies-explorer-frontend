@@ -13,6 +13,14 @@ class MainApi {
 		this._headers = apiConfig.headers;
 	}
 
+	_getHeaders() {
+		const token = localStorage.getItem("jwt");
+		return {
+			Authorization: `Bearer ${token}`,
+			...this._headers,
+		};
+	}
+
 	_statusCheck(res) {
 		if (res.ok) {
 			return res.json();
@@ -24,25 +32,19 @@ class MainApi {
 	// USER RELATED
 	getUserData() {
 		return fetch(`${this._baseUrl}/users/me`, {
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-			},
-		});
+			headers: this._getHeaders(),
+		}).then(this._statusCheck);
 	}
 
 	patchUserData(name, email) {
 		return fetch(`${this._baseUrl}/users/me`, {
 			method: "PATCH",
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-			},
+			headers: this._getHeaders(),
 			body: JSON.stringify({
 				name,
 				email,
 			}),
-		});
+		}).then(this._statusCheck);
 	}
 
 	// MOVIES RELATED
@@ -60,10 +62,7 @@ class MainApi {
 	}) {
 		return fetch(`${this._baseUrl}/movies`, {
 			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-			},
+			headers: this._getHeaders(),
 			body: JSON.stringify({
 				country,
 				director,
@@ -77,26 +76,20 @@ class MainApi {
 				nameRU,
 				nameEN,
 			}),
-		});
+		}).then(this._statusCheck);
 	}
 
 	getSavedMovies() {
 		return fetch(`${this._baseUrl}/movies`, {
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-			},
-		});
+			headers: this._getHeaders(),
+		}).then(this._statusCheck);
 	}
 
 	deleteSavedMovies(cardId) {
 		return fetch(`${this._baseUrl}/movies/${cardId}`, {
 			method: "DELETE",
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-			},
-		});
+			headers: this._getHeaders(),
+		}).then(this._statusCheck);
 	}
 }
 

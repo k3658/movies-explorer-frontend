@@ -29,14 +29,14 @@ function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const navigate = useNavigate();
 
+	// ux/ui
+	const [isLoading, setIsLoading] = useState(false);
+
 	// user info
 	const [currentUser, setCurrentUser] = useState({});
 
 	// movies
 	const [savedMovies, setSavedMovies] = useState([]);
-
-	// ux/ui
-	const [isLoading, setIsLoading] = useState(false);
 
 	// AUTHORIZATION RELATED
 	function handleRegister({ name, email, password }) {
@@ -59,7 +59,7 @@ function App() {
 			.then((data) => {
 				localStorage.setItem("jwt", data.token);
 				setLoggedIn(true);
-				navigate("/", { replace: true });
+				navigate("/movies", { replace: true });
 			})
 			.catch((err) => {
 				console.error(`Ошибка: ${err}`);
@@ -69,8 +69,10 @@ function App() {
 
 	function handleLogout() {
 		setCurrentUser({});
+		setSavedMovies([]);
 		localStorage.clear();
 		setLoggedIn(false);
+		navigate("/", { replace: true });
 	}
 
 	function handleTokenCheck() {
@@ -81,7 +83,7 @@ function App() {
 				.checkToken(jwt)
 				.then(() => {
 					setLoggedIn(true);
-					navigate("/", { replace: true });
+					navigate("/movies", { replace: true });
 				})
 				.catch((err) => {
 					console.error(`Ошибка: ${err}`);
@@ -94,19 +96,6 @@ function App() {
 	}, []);
 
 	// USER RELATED
-	function handleGetUserData() {
-		setIsLoading(true);
-		mainApi
-			.getUserData()
-			.then((data) => {
-				setCurrentUser(data);
-			})
-			.catch((err) => {
-				console.error(`Ошибка: ${err}`);
-			})
-			.finally(() => setIsLoading(false));
-	}
-
 	function handleUpdateUserData({ name, email }) {
 		mainApi
 			.patchUserData(name, email)
@@ -119,17 +108,6 @@ function App() {
 	}
 
 	// MOVIES RELATED
-	function handleGetSavedMovies() {
-		mainApi
-			.getSavedMovies()
-			.then((data) => {
-				setSavedMovies(data);
-			})
-			.catch((err) => {
-				console.error(`Ошибка: ${err}`);
-			});
-	}
-
 	function handleSaveMovie(
 		{
 			country,
@@ -160,7 +138,7 @@ function App() {
 				nameEN,
 			})
 			.then((savedMovie) => {
-				setSavedMovies([savedMovie, ...savedMovies]);
+				setSavedMovies([...savedMovies, savedMovie]);
 				handleSaveButtonClick(evt);
 			})
 			.catch((err) => {
@@ -202,9 +180,9 @@ function App() {
 	useEffect(() => {
 		if (loggedIn) {
 			Promise.all([mainApi.getUserData(), mainApi.getSavedMovies()])
-				.then(([currentUser, movies]) => {
-					handleGetUserData(currentUser);
-					handleGetSavedMovies(movies);
+				.then(([currentUser, savedMovies]) => {
+					setCurrentUser(currentUser);
+					setSavedMovies(savedMovies);
 				})
 				.catch((err) => {
 					console.error(`Ошибка: ${err}`);
@@ -226,29 +204,28 @@ function App() {
 					path="/signin"
 					element={<Login onLogin={handleLogin} isLoading={isLoading} />}
 				/>
+
 				<Route
 					path="/profile"
 					element={
-						<Profile
+						<ProtectedRouteElement
+							element={Profile}
+							loggedIn={loggedIn}
 							handleUpdateUserData={handleUpdateUserData}
 							onLogout={handleLogout}
 						/>
 					}
 				/>
-
-				{/* <Route
+				<Route
 					path="/"
-					element={
-						<ProtectedRouteElement element={<Main />} loggedIn={loggedIn} />
-					}
-				/> */}
-
-				<Route path="/" element={<Main />} loggedIn={loggedIn} />
-
+					element={<ProtectedRouteElement element={Main} loggedIn={loggedIn} />}
+				/>
 				<Route
 					path="/movies"
 					element={
-						<Movies
+						<ProtectedRouteElement
+							element={Movies}
+							loggedIn={loggedIn}
 							isLoading={isLoading}
 							setIsLoading={setIsLoading}
 							savedMovies={savedMovies}
@@ -257,7 +234,17 @@ function App() {
 						/>
 					}
 				/>
-				<Route path="/saved-movies" element={<SavedMovies />} />
+				<Route
+					path="/saved-movies"
+					element={
+						<ProtectedRouteElement
+							element={SavedMovies}
+							loggedIn={loggedIn}
+							savedMovies={savedMovies}
+							onDelete={handleDeleteMovie}
+						/>
+					}
+				/>
 
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>

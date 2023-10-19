@@ -5,13 +5,20 @@ import { useLocation } from "react-router-dom";
 
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-import UseResize from "../../hooks/UseResize";
-import { findScreenSize } from "../../utils/constants";
+import useResize from "../../hooks/useResize";
 
-function MoviesCardList({ movies, savedMovies, onSave, onDelete }) {
+function MoviesCardList({
+	movies,
+	savedMovies,
+	onSave,
+	onDelete,
+	errorMessage,
+}) {
 	const { pathname } = useLocation();
+	const isSavedMoviesPage = pathname === "/saved-movies";
 
-	const screenWidth = UseResize();
+	const screenWidth = useResize();
+
 	const [moviesCount, setMoviesCount] = useState(0);
 	const [additionalMovies, setAdditionalMovies] = useState(0);
 
@@ -21,13 +28,13 @@ function MoviesCardList({ movies, savedMovies, onSave, onDelete }) {
 
 	useEffect(() => {
 		if (screenWidth >= 1024) {
-			setMoviesCount(findScreenSize());
+			setMoviesCount(12);
 			setAdditionalMovies(3);
 		} else if (screenWidth >= 768) {
-			setMoviesCount(findScreenSize());
+			setMoviesCount(8);
 			setAdditionalMovies(2);
 		} else {
-			setMoviesCount(findScreenSize());
+			setMoviesCount(5);
 			setAdditionalMovies(2);
 		}
 	}, [screenWidth]);
@@ -35,20 +42,27 @@ function MoviesCardList({ movies, savedMovies, onSave, onDelete }) {
 	return (
 		<>
 			<section className="movie-cards">
-				<ul className="movie-cards__list">
-					{movies.map((movie) => (
-						<MoviesCard
-							movie={movie}
-							key={movie.id || movie.movieId}
-							pathname={pathname}
-							savedMovies={savedMovies}
-							onSave={onSave}
-							onDelete={onDelete}
-						/>
-					))}
-				</ul>
+				{movies.length !== 0 ? (
+					<ul className="movie-cards__list">
+						{movies.map(
+							(movie, i) =>
+								i < moviesCount && (
+									<MoviesCard
+										movie={movie}
+										key={isSavedMoviesPage ? movie._id : movie.id}
+										pathname={pathname}
+										savedMovies={savedMovies}
+										onSave={onSave}
+										onDelete={onDelete}
+									/>
+								)
+						)}
+					</ul>
+				) : (
+					<p className="movie-card__err">{errorMessage}</p>
+				)}
 				<div className="movie-cards__button-container">
-					{pathname === "/movies" && (
+					{pathname === "/movies" && movies.length > moviesCount && (
 						<button
 							className="movie-cards__more-button button"
 							type="button"
