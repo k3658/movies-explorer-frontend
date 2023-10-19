@@ -2,6 +2,14 @@
 
 Figma-макет: light-4
 
+## Ссылки на проект
+
+IP-адрес 158.160.34.107
+
+Frontend https://filmskk36.nomoreparties.co
+
+Backend https://api.filmskk36.nomoreparties.co
+
 ## `npm start`
 
 Runs the app in the development mode.\
