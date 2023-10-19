@@ -1,35 +1,49 @@
 import "./Profile.css";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import FormValidator from "../../../utils/FormValidator";
+import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
+import UseFormValidator from "../../../hooks/UseFormValidator";
 
-function Profile({ isLoading }) {
+function Profile({ handleUpdateUserData, onLogout, isLoading }) {
+	const { name, email } = useContext(CurrentUserContext);
 	const [isEditProfile, setIsEditProfile] = useState(false);
 
-	const { values, handleChange, errors, isValid, setValues } = FormValidator(
-		{}
-	);
+	const { values, handleChange, errors, isValid, setValues, setIsValid } =
+		UseFormValidator({});
 
 	function handleClickEditProfile(evt) {
 		evt.preventDefault();
 		setIsEditProfile(true);
 	}
 
+	function handleSubmit(evt) {
+		evt.preventDefault();
+		handleUpdateUserData(values);
+	}
+
 	useEffect(() => {
-		setValues({ name: "Катя", email: "lk36kk@gmail.com" });
-	}, []);
+		setValues({ name, email });
+		setIsEditProfile(false);
+	}, [name, email]);
+
+	useEffect(() => {
+		if (values.name === name && values.email === email) {
+			setIsValid(false);
+		}
+	}, [values]);
 
 	return (
 		<>
 			<main className="profile">
 				<section className="profile__container">
-					<h1 className="profile__title">Привет, Катя!</h1>
+					<h1 className="profile__title">Привет, {name}!</h1>
 					<form
 						className="profile__form"
 						name="profile"
 						isLoading={isLoading}
+						onSubmit={handleSubmit}
 						noValidate
 					>
 						<div className="profile__input-container">
@@ -44,10 +58,11 @@ function Profile({ isLoading }) {
 								minLength="2"
 								maxLength="30"
 								placeholder="Имя"
-								value={values.name}
+								value={values.name || ""}
 								disabled={!isEditProfile}
 								onChange={handleChange}
 								isValid={isValid}
+								errors={errors.name}
 								required
 							/>
 						</div>
@@ -62,10 +77,11 @@ function Profile({ isLoading }) {
 								name="email"
 								type="email"
 								placeholder="E-mail"
-								value={values.email}
+								value={values.email || ""}
 								disabled={!isEditProfile}
 								onChange={handleChange}
 								isValid={isValid}
+								errors={errors.email}
 								required
 							/>
 						</div>
@@ -92,9 +108,12 @@ function Profile({ isLoading }) {
 								>
 									Редактировать
 								</button>
-								<Link className="profile__logout-button button" to="/">
+								<button
+									className="profile__logout-button button"
+									onClick={onLogout}
+								>
 									Выйти из аккаунта
-								</Link>
+								</button>
 							</div>
 						)}
 					</form>

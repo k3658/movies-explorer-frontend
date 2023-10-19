@@ -6,13 +6,13 @@ import icon_landing from "../../images/icon_landing.svg";
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-import { findScreenSize } from "../../utils/constants";
+import UseResize from "../../hooks/UseResize";
 
 function BurgerMenu({ isLoggedIn }) {
 	const { pathname } = useLocation();
 
 	const [isMenuOpened, setIsMenuOpened] = useState(false);
-	const [isMobile, setIsMobile] = useState(findScreenSize());
+	const isMobile = UseResize() <= 768;
 
 	function handleToggleMenu() {
 		setIsMenuOpened(!isMenuOpened);

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 
 import AuthForm from "../AuthForm/AuthForm";
-import FormValidator from "../../../utils/FormValidator";
+import UseFormValidator from "../../../hooks/UseFormValidator";
 
 function Register({ onRegister, isLoading }) {
 	const { values, handleChange, errors, isValid, setValues, resetForm } =
-		FormValidator({});
+		UseFormValidator({});
 
 	function handleSubmit(e) {
 		e.preventDefault();

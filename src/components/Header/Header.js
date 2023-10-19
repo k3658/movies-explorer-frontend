@@ -6,7 +6,7 @@ import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-function Header({ isLoggedIn }) {
+function Header({ loggedIn }) {
 	const { pathname } = useLocation();
 
 	return (
@@ -21,8 +21,8 @@ function Header({ isLoggedIn }) {
 					<Link to="/" className="header__logo link">
 						<img src={logo} alt="Логотип приложения" />
 					</Link>
-					{isLoggedIn ? (
-						<BurgerMenu isLoggedIn={isLoggedIn} />
+					{loggedIn ? (
+						<BurgerMenu loggedIn={loggedIn} />
 					) : (
 						<nav className="header__auth">
 							<Link to="/signup" className="header__auth-signup link">
