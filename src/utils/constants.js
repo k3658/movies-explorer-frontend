@@ -1,5 +1,5 @@
 // URLS
-const URL_BASE_API = "api.filmskk36.nomoreparties.co";
+const URL_BASE_API = "https://api.filmskk36.nomoreparties.co";
 const URL_BEATFILM_MOVIES_API = "https://api.nomoreparties.co";
 
 // MOVIE CARDS

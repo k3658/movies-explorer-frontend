@@ -8,9 +8,9 @@ const mainApiConfig = {
 };
 
 class MainApi {
-	constructor(mainApiConfig) {
-		this._baseUrl = mainApiConfig.baseUrl;
-		this._headers = mainApiConfig.headers;
+	constructor(apiConfig) {
+		this._baseUrl = apiConfig.baseUrl;
+		this._headers = apiConfig.headers;
 	}
 
 	_statusCheck(res) {
@@ -23,7 +23,7 @@ class MainApi {
 
 	// USER RELATED
 	getUserData() {
-		return fetch(`${URL_BASE_API}/users/me`, {
+		return fetch(`${this._baseUrl}/users/me`, {
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -32,7 +32,7 @@ class MainApi {
 	}
 
 	patchUserData(name, email) {
-		return fetch(`${URL_BASE_API}/users/me`, {
+		return fetch(`${this._baseUrl}/users/me`, {
 			method: "PATCH",
 			headers: {
 				"Content-Type": "application/json",
@@ -58,7 +58,7 @@ class MainApi {
 		nameRU,
 		nameEN,
 	}) {
-		return fetch(`${URL_BASE_API}/movies`, {
+		return fetch(`${this._baseUrl}/movies`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -81,7 +81,7 @@ class MainApi {
 	}
 
 	getSavedMovies() {
-		return fetch(`${URL_BASE_API}/movies`, {
+		return fetch(`${this._baseUrl}/movies`, {
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -90,7 +90,7 @@ class MainApi {
 	}
 
 	deleteSavedMovies(cardId) {
-		return fetch(`${URL_BASE_API}/movies/${cardId}`, {
+		return fetch(`${this._baseUrl}/movies/${cardId}`, {
 			method: "DELETE",
 			headers: {
 				"Content-Type": "application/json",

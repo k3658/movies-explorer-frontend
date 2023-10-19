@@ -8,9 +8,9 @@ const moviesApiConfig = {
 };
 
 class MoviesApi {
-	constructor(moviesApiConfig) {
-		this._baseUrl = moviesApiConfig.baseUrl;
-		this._headers = moviesApiConfig.headers;
+	constructor(apiConfig) {
+		this._baseUrl = apiConfig.baseUrl;
+		this._headers = apiConfig.headers;
 	}
 
 	_statusCheck(res) {

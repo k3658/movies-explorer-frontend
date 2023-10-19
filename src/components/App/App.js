@@ -81,7 +81,6 @@ function App() {
 				.checkToken(jwt)
 				.then(() => {
 					setLoggedIn(true);
-
 					navigate("/", { replace: true });
 				})
 				.catch((err) => {
