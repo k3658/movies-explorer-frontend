@@ -40,7 +40,7 @@ function Login({ onLogin, isLoading }) {
 					type="email"
 					placeholder="E-mail"
 					minLength="3"
-					maxLength="40"
+					maxLength="30"
 					onChange={handleChange}
 					value={values.email || ""}
 					required
@@ -58,8 +58,8 @@ function Login({ onLogin, isLoading }) {
 					name="password"
 					type="password"
 					placeholder="Пароль"
-					minLength="6"
-					maxLength="40"
+					minLength="8"
+					maxLength="30"
 					onChange={handleChange}
 					value={values.password || ""}
 					required

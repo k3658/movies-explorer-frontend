@@ -55,7 +55,7 @@ function Profile({ handleUpdateUserData, onLogout, isLoading }) {
 								id="name"
 								name="name"
 								type="text"
-								minLength="2"
+								minLength="3"
 								maxLength="30"
 								placeholder="Имя"
 								value={values.name || ""}
@@ -76,6 +76,8 @@ function Profile({ handleUpdateUserData, onLogout, isLoading }) {
 								id="email"
 								name="email"
 								type="email"
+								minLength="3"
+								maxLength="30"
 								placeholder="E-mail"
 								value={values.email || ""}
 								disabled={!isEditProfile}

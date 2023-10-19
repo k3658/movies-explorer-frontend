@@ -40,7 +40,7 @@ function Register({ onRegister, isLoading }) {
 					type="name"
 					placeholder="Имя"
 					minLength="3"
-					maxLength="40"
+					maxLength="30"
 					onChange={handleChange}
 					value={values.name || ""}
 					required
@@ -59,7 +59,7 @@ function Register({ onRegister, isLoading }) {
 					type="email"
 					placeholder="E-mail"
 					minLength="3"
-					maxLength="40"
+					maxLength="30"
 					onChange={handleChange}
 					value={values.email || ""}
 					required
@@ -77,8 +77,8 @@ function Register({ onRegister, isLoading }) {
 					name="password"
 					type="password"
 					placeholder="Пароль"
-					minLength="6"
-					maxLength="40"
+					minLength="8"
+					maxLength="30"
 					onChange={handleChange}
 					value={values.password || ""}
 					required
