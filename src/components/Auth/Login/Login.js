@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 
 import AuthForm from "../AuthForm/AuthForm";
+
 import useFormValidator from "../../../hooks/useFormValidator";
+import { LINK_REGEX } from "../../../utils/constants";
 
 function Login({ onLogin, isLoading }) {
 	const { values, handleChange, errors, isValid, setValues, resetForm } =
@@ -39,8 +41,7 @@ function Login({ onLogin, isLoading }) {
 					name="email"
 					type="email"
 					placeholder="E-mail"
-					minLength="3"
-					maxLength="30"
+					pattern={LINK_REGEX}
 					onChange={handleChange}
 					value={values.email || ""}
 					required
@@ -59,7 +60,6 @@ function Login({ onLogin, isLoading }) {
 					type="password"
 					placeholder="Пароль"
 					minLength="8"
-					maxLength="30"
 					onChange={handleChange}
 					value={values.password || ""}
 					required

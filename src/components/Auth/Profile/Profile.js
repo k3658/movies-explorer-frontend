@@ -4,6 +4,7 @@ import React, { useEffect, useState, useContext } from "react";
 
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 import useFormValidator from "../../../hooks/useFormValidator";
+import { LINK_REGEX } from "../../../utils/constants";
 
 function Profile({ handleUpdateUserData, onLogout, isLoading }) {
 	const { name, email } = useContext(CurrentUserContext);
@@ -75,8 +76,7 @@ function Profile({ handleUpdateUserData, onLogout, isLoading }) {
 								id="email"
 								name="email"
 								type="email"
-								minLength="3"
-								maxLength="30"
+								pattern={LINK_REGEX}
 								placeholder="E-mail"
 								value={values.email || ""}
 								disabled={!isEditProfile}

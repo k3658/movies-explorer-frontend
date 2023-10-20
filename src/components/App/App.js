@@ -44,7 +44,7 @@ function App() {
 		auth
 			.register({ name, email, password })
 			.then(() => {
-				navigate("/signin", { replace: true });
+				handleLogin({ email, password });
 			})
 			.catch((err) => {
 				console.error(`Ошибка: ${err}`);
@@ -83,7 +83,6 @@ function App() {
 				.checkToken(jwt)
 				.then(() => {
 					setLoggedIn(true);
-					navigate("/movies", { replace: true });
 				})
 				.catch((err) => {
 					console.error(`Ошибка: ${err}`);
@@ -205,6 +204,8 @@ function App() {
 					element={<Login onLogin={handleLogin} isLoading={isLoading} />}
 				/>
 
+				<Route path="/" element={<Main loggedIn={loggedIn} />} />
+
 				<Route
 					path="/profile"
 					element={
@@ -215,10 +216,6 @@ function App() {
 							onLogout={handleLogout}
 						/>
 					}
-				/>
-				<Route
-					path="/"
-					element={<ProtectedRouteElement element={Main} loggedIn={loggedIn} />}
 				/>
 				<Route
 					path="/movies"
