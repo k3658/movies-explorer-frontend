@@ -136,6 +136,13 @@
 	transition: opacity 0.3s ease-out;
 }
 
+.profile__save-button_disabled {
+	background: #f8f8f8;
+	border: 1px solid #f8f8f8;
+	color: #c2c2c2;
+	cursor: default;
+}
+
 @media screen and (min-width: 768px) {
 	.profile__submit-error {
 		margin: 0 0 16px;

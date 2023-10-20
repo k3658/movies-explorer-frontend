@@ -23,6 +23,8 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 
 import PageNotFound from "../PageNotFound/PageNotFound";
+import { SUBMIT_SUCCESS } from "../../utils/constants";
+import { errorMessages, statusCodes } from "../../utils/errors";
 
 function App() {
 	// auth
@@ -32,8 +34,12 @@ function App() {
 	// ux/ui
 	const [isLoading, setIsLoading] = useState(false);
 
-	// user info
+	// user
 	const [currentUser, setCurrentUser] = useState({});
+
+	// succes/error messages (auth and profile components related)
+	const [submitSuccessMessage, setSubmitSuccessMessage] = useState("");
+	const [submitErrorMessage, setSubmitErrorMessage] = useState("");
 
 	// movies
 	const [savedMovies, setSavedMovies] = useState([]);
@@ -48,6 +54,11 @@ function App() {
 			})
 			.catch((err) => {
 				console.error(`Ошибка: ${err}`);
+				if (err === statusCodes.ERROR_CONFLICT) {
+					setSubmitErrorMessage(errorMessages.MESSAGE_ERROR_EXISTING_EMAIL);
+				} else {
+					setSubmitErrorMessage(errorMessages.MESSAGE_ERROR_REGISTER);
+				}
 			})
 			.finally(() => setIsLoading(false));
 	}
@@ -63,6 +74,11 @@ function App() {
 			})
 			.catch((err) => {
 				console.error(`Ошибка: ${err}`);
+				if (err === statusCodes.ERR0R_UNAUTHORIZED) {
+					setSubmitErrorMessage(errorMessages.MESSAGE_ERROR_BAD_DATA);
+				} else {
+					setSubmitErrorMessage(errorMessages.MESSAGE_ERROR_LOGIN);
+				}
 			})
 			.finally(() => setIsLoading(false));
 	}
@@ -100,10 +116,22 @@ function App() {
 			.patchUserData(name, email)
 			.then((data) => {
 				setCurrentUser(data);
+				setSubmitSuccessMessage(SUBMIT_SUCCESS);
 			})
 			.catch((err) => {
 				console.error(`Ошибка: ${err}`);
+				if (err === statusCodes.ERROR_CONFLICT) {
+					setSubmitErrorMessage(errorMessages.MESSAGE_ERROR_EXISTING_EMAIL);
+				} else {
+					setSubmitErrorMessage(errorMessages.MESSAGE_ERROR_UPDATE_PROFILE);
+				}
 			});
+	}
+
+	// SUCCESS/ERROR MESSAGES (auth and profile related)
+	function resetSubmitMessages() {
+		setSubmitErrorMessage("");
+		setSubmitSuccessMessage("");
 	}
 
 	// MOVIES RELATED
@@ -196,12 +224,24 @@ function App() {
 				<Route
 					path="/signup"
 					element={
-						<Register onRegister={handleRegister} isLoading={isLoading} />
+						<Register
+							onRegister={handleRegister}
+							submitErrorMessage={submitErrorMessage}
+							resetSubmitMessages={resetSubmitMessages}
+							isLoading={isLoading}
+						/>
 					}
 				/>
 				<Route
 					path="/signin"
-					element={<Login onLogin={handleLogin} isLoading={isLoading} />}
+					element={
+						<Login
+							onLogin={handleLogin}
+							submitErrorMessage={submitErrorMessage}
+							resetSubmitMessages={resetSubmitMessages}
+							isLoading={isLoading}
+						/>
+					}
 				/>
 
 				<Route path="/" element={<Main loggedIn={loggedIn} />} />
@@ -213,6 +253,9 @@ function App() {
 							element={Profile}
 							loggedIn={loggedIn}
 							handleUpdateUserData={handleUpdateUserData}
+							submitErrorMessage={submitErrorMessage}
+							submitSuccessMessage={submitSuccessMessage}
+							resetSubmitMessages={resetSubmitMessages}
 							onLogout={handleLogout}
 						/>
 					}

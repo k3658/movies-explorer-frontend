@@ -5,7 +5,12 @@ import AuthForm from "../AuthForm/AuthForm";
 import useFormValidator from "../../../hooks/useFormValidator";
 import { LINK_REGEX } from "../../../utils/constants";
 
-function Register({ onRegister, isLoading }) {
+function Register({
+	onRegister,
+	submitErrorMessage,
+	resetSubmitMessages,
+	isLoading,
+}) {
 	const { values, handleChange, errors, isValid, setValues, resetForm } =
 		useFormValidator({});
 
@@ -29,6 +34,8 @@ function Register({ onRegister, isLoading }) {
 				name="signup"
 				title="Добро пожаловать!"
 				textButton="Зарегистрироваться"
+				submitErrorMessage={submitErrorMessage}
+				resetSubmitMessages={resetSubmitMessages}
 				onSubmit={handleSubmit}
 				isLoading={isLoading}
 			>

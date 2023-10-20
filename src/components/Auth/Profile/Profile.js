@@ -6,7 +6,14 @@ import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 import useFormValidator from "../../../hooks/useFormValidator";
 import { LINK_REGEX } from "../../../utils/constants";
 
-function Profile({ handleUpdateUserData, onLogout, isLoading }) {
+function Profile({
+	isLoading,
+	handleUpdateUserData,
+	submitErrorMessage,
+	submitSuccessMessage,
+	resetSubmitMessages,
+	onLogout,
+}) {
 	const { name, email } = useContext(CurrentUserContext);
 	const [isEditProfile, setIsEditProfile] = useState(false);
 
@@ -15,16 +22,19 @@ function Profile({ handleUpdateUserData, onLogout, isLoading }) {
 
 	function handleClickEditProfile(evt) {
 		evt.preventDefault();
+
 		setIsEditProfile(true);
 	}
 
 	function handleSubmit(evt) {
 		evt.preventDefault();
+
 		handleUpdateUserData(values);
 	}
 
 	useEffect(() => {
 		setValues({ name, email });
+
 		setIsEditProfile(false);
 	}, [name, email]);
 
@@ -33,6 +43,10 @@ function Profile({ handleUpdateUserData, onLogout, isLoading }) {
 			setIsValid(false);
 		}
 	}, [values]);
+
+	useEffect(() => {
+		resetSubmitMessages();
+	}, []);
 
 	return (
 		<>
@@ -89,9 +103,17 @@ function Profile({ handleUpdateUserData, onLogout, isLoading }) {
 
 						{isEditProfile ? (
 							<div className="profile__buttons">
-								{<span className="profile__submit-error">Какая-то ошибка</span>}
+								{
+									<span className="profile__submit-error">
+										{submitErrorMessage}
+									</span>
+								}
 								<button
-									className="profile__save-button button"
+									className={`${
+										isValid
+											? "profile__save-button button"
+											: "profile__save-button profile__save-button_disabled"
+									}`}
 									type="submit"
 									aria-label="Cохранить изменения"
 									disabled={!isValid}
@@ -101,6 +123,11 @@ function Profile({ handleUpdateUserData, onLogout, isLoading }) {
 							</div>
 						) : (
 							<div className="profile__buttons">
+								{
+									<span className="profile__submit-success">
+										{submitSuccessMessage}
+									</span>
+								}
 								<button
 									type="button"
 									className="profile__edit-button button"

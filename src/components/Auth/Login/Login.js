@@ -5,7 +5,12 @@ import AuthForm from "../AuthForm/AuthForm";
 import useFormValidator from "../../../hooks/useFormValidator";
 import { LINK_REGEX } from "../../../utils/constants";
 
-function Login({ onLogin, isLoading }) {
+function Login({
+	onLogin,
+	submitErrorMessage,
+	resetSubmitMessages,
+	isLoading,
+}) {
 	const { values, handleChange, errors, isValid, setValues, resetForm } =
 		useFormValidator({});
 
@@ -29,6 +34,8 @@ function Login({ onLogin, isLoading }) {
 				title="Рады видеть!"
 				textButton="Войти"
 				isLogin={true}
+				submitErrorMessage={submitErrorMessage}
+				resetSubmitMessages={resetSubmitMessages}
 				onSubmit={handleSubmit}
 				isLoading={isLoading}
 			>

@@ -14,8 +14,8 @@ const errorMessages = {
 	MESSAGE_ERROR_REGISTER: "При регистрации пользователя произошла ошибка.",
 	MESSAGE_ERROR_EXISTING_EMAIL: "Пользователь с таким email уже существует.",
 	MESSAGE_ERROR_LOGIN: "При авторизации произошла ошибка.",
+	MESSAGE_ERROR_BAD_DATA: "Вы ввели неправильный логин или пароль.",
 	MESSAGE_ERROR_UPDATE_PROFILE: "При обновлении профиля произошла ошибка.",
-	MESSAGE_ERROR_SAME_DATA: "Такие данные уже используются. Измените данные.",
 };
 
 const searchMessages = {

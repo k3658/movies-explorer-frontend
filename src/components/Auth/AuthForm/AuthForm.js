@@ -8,6 +8,8 @@ function AuthForm({
 	name,
 	textButton,
 	children,
+	submitErrorMessage,
+	resetSubmitMessages,
 	onSubmit,
 	isLoading,
 	isLogin,
@@ -19,6 +21,10 @@ function AuthForm({
 	useEffect(() => {
 		setIsValid(authFormRef.current.checkValidity());
 	}, [children]);
+
+	useEffect(() => {
+		resetSubmitMessages();
+	}, []);
 
 	return (
 		<main>
@@ -40,6 +46,7 @@ function AuthForm({
 							noValidate
 						>
 							{children}
+							{<span className="auth__submit-error">{submitErrorMessage}</span>}
 							<button
 								className={`${
 									isValid
