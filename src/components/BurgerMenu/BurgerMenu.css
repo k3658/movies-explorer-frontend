@@ -90,7 +90,7 @@
 	}
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1024px) {
 	.burger-menu__container {
 		position: relative;
 		flex-direction: row;
@@ -227,7 +227,7 @@
 	}
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1024px) {
 	.burger-menu__nav-button {
 		display: none;
 	}

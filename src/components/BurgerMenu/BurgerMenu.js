@@ -8,13 +8,15 @@ import { NavLink, useLocation } from "react-router-dom";
 
 import useResize from "../../hooks/useResize";
 
+import { MOBILE_NAV_SCREEN_WIDTH } from "../../utils/constants";
+
 function BurgerMenu({ loggedIn }) {
 	const { pathname } = useLocation();
 
 	const btnBurger = useRef();
 	const [isMenuOpened, setIsMenuOpened] = useState(false);
 
-	const isMobile = useResize() <= 768;
+	const isMobile = useResize() <= MOBILE_NAV_SCREEN_WIDTH;
 
 	function handleToggleMenu() {
 		setIsMenuOpened(!isMenuOpened);

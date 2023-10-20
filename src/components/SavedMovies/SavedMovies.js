@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import SearchForm from "../Movies/SearchForm/SearchForm";
+import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 import useFilterMovies from "../../hooks/useFilterMovies";

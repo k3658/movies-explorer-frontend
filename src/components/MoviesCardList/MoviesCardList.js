@@ -6,6 +6,13 @@ import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 import useResize from "../../hooks/useResize";
+import {
+	DESKTOP_SCREEN_WIDTH,
+	DESKTOP_SCREEN_WIDTH_CARDS,
+	TABLET_SCREEN_WIDTH,
+	TABLET_SCREEN_WIDTH_CARDS,
+	MOB_SCREEN_WIDTH_CARDS,
+} from "../../utils/constants";
 
 function MoviesCardList({
 	movies,
@@ -20,21 +27,21 @@ function MoviesCardList({
 	const screenWidth = useResize();
 
 	const [moviesCount, setMoviesCount] = useState(0);
-	const [additionalMovies, setAdditionalMovies] = useState(0);
+	const [additionalMovies, setAdditionalMovies] = useState(0); // amount of movie cards showing after button "more" click
 
 	function handleClickMoreButton() {
 		setMoviesCount(moviesCount + additionalMovies);
 	}
 
 	useEffect(() => {
-		if (screenWidth >= 1024) {
-			setMoviesCount(12);
+		if (screenWidth >= DESKTOP_SCREEN_WIDTH) {
+			setMoviesCount(DESKTOP_SCREEN_WIDTH_CARDS);
 			setAdditionalMovies(3);
-		} else if (screenWidth >= 768) {
-			setMoviesCount(8);
+		} else if (screenWidth >= TABLET_SCREEN_WIDTH) {
+			setMoviesCount(TABLET_SCREEN_WIDTH_CARDS);
 			setAdditionalMovies(2);
 		} else {
-			setMoviesCount(5);
+			setMoviesCount(MOB_SCREEN_WIDTH_CARDS);
 			setAdditionalMovies(2);
 		}
 	}, [screenWidth]);

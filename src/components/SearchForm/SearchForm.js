@@ -3,8 +3,8 @@ import "./SearchForm.css";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
-import useFormValidator from "../../../hooks/useFormValidator";
+import FilterCheckbox from "./FilterCheckbox/FilterCheckbox";
+import useFormValidator from "../../hooks/useFormValidator";
 
 function SearchForm({ onSubmit, onChange, isShortMovie }) {
 	const location = useLocation();
@@ -43,7 +43,7 @@ function SearchForm({ onSubmit, onChange, isShortMovie }) {
 						type="text"
 						placeholder="Фильм"
 						onChange={handleChange}
-						value={values.search ?? ""}
+						value={values.search || ""}
 						autoComplete="off"
 						required
 					/>
@@ -51,6 +51,7 @@ function SearchForm({ onSubmit, onChange, isShortMovie }) {
 						className="search__button button"
 						type="submit"
 						aria-label="Найти фильмы"
+						disabled={!isValid}
 					>
 						Найти
 					</button>

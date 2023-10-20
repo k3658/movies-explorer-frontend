@@ -6,6 +6,7 @@ function FilterCheckbox({ onChange, value }) {
 			<label className="filter">
 				<input
 					className="filter__checkbox"
+					name="checkbox"
 					id="checkbox"
 					type="checkbox"
 					onChange={onChange}

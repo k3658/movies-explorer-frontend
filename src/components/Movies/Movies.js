@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import moviesApi from "../../utils/MoviesApi";
 
-import SearchForm from "./SearchForm/SearchForm";
+import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 import useFilterMovies from "../../hooks/useFilterMovies";
 import { errorMessages, searchMessages } from "../../utils/errors";
-import Preloader from "./Preloader/Preloader";
+import Preloader from "../Preloader/Preloader";
 
 function Movies({ isLoading, setIsLoading, savedMovies, onSave, onDelete }) {
 	const allMovies = JSON.parse(localStorage.getItem("allMovies")) ?? [];
@@ -48,8 +48,8 @@ function Movies({ isLoading, setIsLoading, savedMovies, onSave, onDelete }) {
 					handleFilterMovies(movies, inputSearch, isShort);
 				})
 				.catch((err) => {
+					console.error(err);
 					setErrorMessage(errorMessages.MESSAGE_ERROR_SEARCH);
-					console.log(err);
 					setIsLoading(false);
 				});
 		} else {
