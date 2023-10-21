@@ -12,7 +12,7 @@ Backend https://api.filmskk36.nomoreparties.co
 
 ## Ссылка на пул реквест
 
-https://github.com/k 3658/movies-explorer-frontend/pull/2
+https://github.com/k3658/movies-explorer-frontend/pull/2
 
 ## `npm start`
 
