@@ -27,7 +27,7 @@ function Movies({ isLoading, setIsLoading, savedMovies, onSave, onDelete }) {
 	}
 
 	function handleFilterMovies(movies, inputSearch, isShort) {
-		const filteredFilms = filterMovies(movies, inputSearch, isShort);
+		const filteredFilms = filterMovies(movies, inputSearch);
 		localStorage.setItem("filteredMovies", JSON.stringify(filteredFilms));
 		if (!filteredFilms.length === 0) {
 			setErrorMessage(searchMessages.notFoundSearch);
@@ -48,7 +48,7 @@ function Movies({ isLoading, setIsLoading, savedMovies, onSave, onDelete }) {
 					handleFilterMovies(movies, inputSearch, isShort);
 				})
 				.catch((err) => {
-					console.error(err);
+					console.error(`Ошибка: ${err}`);
 					setErrorMessage(errorMessages.MESSAGE_ERROR_SEARCH);
 					setIsLoading(false);
 				});

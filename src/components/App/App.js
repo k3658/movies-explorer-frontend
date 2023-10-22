@@ -1,7 +1,7 @@
 import "../../index.css";
 
 import React, { useState, useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
 
 import ProtectedRouteElement from "../ProtectedRouteElement/ProtectedRouteElement";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -70,7 +70,7 @@ function App() {
 			.then((data) => {
 				localStorage.setItem("jwt", data.token);
 				setLoggedIn(true);
-				navigate("/movies", { replace: true });
+				navigate("/movies", { replace: false });
 			})
 			.catch((err) => {
 				console.error(`Ошибка: ${err}`);
@@ -224,23 +224,31 @@ function App() {
 				<Route
 					path="/signup"
 					element={
-						<Register
-							onRegister={handleRegister}
-							submitErrorMessage={submitErrorMessage}
-							resetSubmitMessages={resetSubmitMessages}
-							isLoading={isLoading}
-						/>
+						loggedIn ? (
+							<Navigate to="/movies" replace />
+						) : (
+							<Register
+								onRegister={handleRegister}
+								submitErrorMessage={submitErrorMessage}
+								resetSubmitMessages={resetSubmitMessages}
+								isLoading={isLoading}
+							/>
+						)
 					}
 				/>
 				<Route
 					path="/signin"
 					element={
-						<Login
-							onLogin={handleLogin}
-							submitErrorMessage={submitErrorMessage}
-							resetSubmitMessages={resetSubmitMessages}
-							isLoading={isLoading}
-						/>
+						loggedIn ? (
+							<Navigate to="/movies" replace />
+						) : (
+							<Login
+								onLogin={handleLogin}
+								submitErrorMessage={submitErrorMessage}
+								resetSubmitMessages={resetSubmitMessages}
+								isLoading={isLoading}
+							/>
+						)
 					}
 				/>
 

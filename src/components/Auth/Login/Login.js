@@ -23,10 +23,6 @@ function Login({
 		});
 	}
 
-	useEffect(() => {
-		resetForm();
-	}, [onLogin]);
-
 	return (
 		<>
 			<AuthForm

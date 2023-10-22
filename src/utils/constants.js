@@ -3,8 +3,7 @@ const URL_BASE_API = "https://api.filmskk36.nomoreparties.co";
 const URL_BEATFILM_MOVIES_API = "https://api.nomoreparties.co";
 
 // LINK REGEX
-const LINK_REGEX =
-	/^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9-]*\.?)*\.{1}[A-Za-zА-Яа-я0-9-]{2,8}(\/([\w#!:.?+=&%@!\-/])*)?/;
+const LINK_REGEX = "^[a-zA-Z0-9+_.\\-]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]{2,4}$";
 
 // SUBMIT SUCCESS MESSAGE
 const SUBMIT_SUCCESS = "Данные успешно обновлены.";
@@ -15,11 +14,14 @@ const MOBILE_NAV_SCREEN_WIDTH = 1023;
 // MOVIES CARDS || SCREEN WIDTH
 const DESKTOP_SCREEN_WIDTH = 1024;
 const DESKTOP_SCREEN_WIDTH_CARDS = 12;
+const DESKTOP_ADDITIONAL_CARDS = 3;
 
 const TABLET_SCREEN_WIDTH = 768;
 const TABLET_SCREEN_WIDTH_CARDS = 8;
+const TABLET_ADDITIONAL_CARDS = 2;
 
 const MOB_SCREEN_WIDTH_CARDS = 5;
+const MOB_ADDITIONAL_CARDS = 2;
 
 // DURATION
 const SHORT_MOVIE_DURATION = 40;
@@ -32,8 +34,11 @@ export {
 	MOBILE_NAV_SCREEN_WIDTH,
 	DESKTOP_SCREEN_WIDTH,
 	DESKTOP_SCREEN_WIDTH_CARDS,
+	DESKTOP_ADDITIONAL_CARDS,
 	TABLET_SCREEN_WIDTH,
 	TABLET_SCREEN_WIDTH_CARDS,
+	TABLET_ADDITIONAL_CARDS,
 	MOB_SCREEN_WIDTH_CARDS,
+	MOB_ADDITIONAL_CARDS,
 	SHORT_MOVIE_DURATION,
 };

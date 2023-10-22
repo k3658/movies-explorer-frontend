@@ -24,10 +24,6 @@ function Register({
 		});
 	}
 
-	useEffect(() => {
-		resetForm();
-	}, [onRegister]);
-
 	return (
 		<>
 			<AuthForm

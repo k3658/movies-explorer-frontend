@@ -1,9 +1,8 @@
 import "./MoviesCard.css";
 
-import { useState, useEffect, useContext } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { URL_BEATFILM_MOVIES_API } from "../../utils/constants";
 
 function MoviesCard({ movie, onSave, onDelete }) {

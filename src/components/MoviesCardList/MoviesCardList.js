@@ -9,9 +9,12 @@ import useResize from "../../hooks/useResize";
 import {
 	DESKTOP_SCREEN_WIDTH,
 	DESKTOP_SCREEN_WIDTH_CARDS,
+	DESKTOP_ADDITIONAL_CARDS,
 	TABLET_SCREEN_WIDTH,
 	TABLET_SCREEN_WIDTH_CARDS,
+	TABLET_ADDITIONAL_CARDS,
 	MOB_SCREEN_WIDTH_CARDS,
+	MOB_ADDITIONAL_CARDS,
 } from "../../utils/constants";
 
 function MoviesCardList({
@@ -36,13 +39,13 @@ function MoviesCardList({
 	useEffect(() => {
 		if (screenWidth >= DESKTOP_SCREEN_WIDTH) {
 			setMoviesCount(DESKTOP_SCREEN_WIDTH_CARDS);
-			setAdditionalMovies(3);
+			setAdditionalMovies(DESKTOP_ADDITIONAL_CARDS);
 		} else if (screenWidth >= TABLET_SCREEN_WIDTH) {
 			setMoviesCount(TABLET_SCREEN_WIDTH_CARDS);
-			setAdditionalMovies(2);
+			setAdditionalMovies(TABLET_ADDITIONAL_CARDS);
 		} else {
 			setMoviesCount(MOB_SCREEN_WIDTH_CARDS);
-			setAdditionalMovies(2);
+			setAdditionalMovies(MOB_ADDITIONAL_CARDS);
 		}
 	}, [screenWidth]);
 

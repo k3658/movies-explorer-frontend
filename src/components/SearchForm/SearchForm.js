@@ -3,7 +3,7 @@ import "./SearchForm.css";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import FilterCheckbox from "./FilterCheckbox/FilterCheckbox";
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import useFormValidator from "../../hooks/useFormValidator";
 
 function SearchForm({ onSubmit, onChange, isShortMovie }) {
